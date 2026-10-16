@@ -1,0 +1,283 @@
+/* =========================================================
+   6 DISTINCT DESIGN TEMPLATES (themes.css)
+   ========================================================= */
+
+/* 1. 👑 Royal Gold Gala (Luxury Black & Gold) */
+body.theme-golden {
+    --bg-color: #0b0c10;
+    --text-color: #f7f9fa;
+    --text-muted: #a0aec0;
+    --card-glass-bg: rgba(22, 24, 32, 0.78);
+    --card-glass-hover: rgba(30, 34, 46, 0.88);
+    --border-color: rgba(255, 215, 0, 0.28);
+    --accent-color: #ffd700;
+    --accent-glow: #ffd700;
+    --accent-focus-ring: rgba(255, 215, 0, 0.35);
+    --accent-gradient: linear-gradient(135deg, #ffd700, #ff9900);
+    --title-gradient: linear-gradient(135deg, #ffffff 15%, #ffd700 80%, #ffaa00 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ffd700, #ff9900);
+    --btn-primary-text: #0b0c10;
+    --gift-box-bg: linear-gradient(135deg, #1c1f26, #2d3340);
+    --gift-box-lid: linear-gradient(135deg, #2d3340, #1c1f26);
+    --gift-ribbon: #ffd700;
+    --cake-tier-base: #2a2215;
+    --cake-tier-mid: #42351c;
+    --cake-tier-top: #ffd700;
+}
+
+/* 2. 🌹 Romantic Rose & Glass (Love, Hearts & Pink Velvet) */
+body.theme-rose {
+    --bg-color: #160811;
+    --text-color: #fff0f5;
+    --text-muted: #f3a6c2;
+    --card-glass-bg: rgba(45, 14, 32, 0.75);
+    --card-glass-hover: rgba(65, 22, 48, 0.85);
+    --border-color: rgba(255, 75, 130, 0.35);
+    --accent-color: #ff3366;
+    --accent-glow: #ff758c;
+    --accent-focus-ring: rgba(255, 51, 102, 0.35);
+    --accent-gradient: linear-gradient(135deg, #ff3366, #ff758c);
+    --title-gradient: linear-gradient(135deg, #ffffff 10%, #ff758c 60%, #ff3366 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ff3366, #ff758c);
+    --btn-primary-text: #ffffff;
+    --gift-box-bg: linear-gradient(135deg, #ff2e63, #b80d46);
+    --gift-box-lid: linear-gradient(135deg, #b80d46, #800020);
+    --gift-ribbon: #ffffff;
+    --cake-tier-base: #800020;
+    --cake-tier-mid: #c70039;
+    --cake-tier-top: #ff758c;
+}
+
+/* 3. ⚡ Cyberpunk Neon Synth (Futuristic Synthwave Glow) */
+body.theme-cyber {
+    --bg-color: #060814;
+    --text-color: #e6f1ff;
+    --text-muted: #8892b0;
+    --card-glass-bg: rgba(13, 17, 38, 0.82);
+    --card-glass-hover: rgba(20, 27, 58, 0.9);
+    --border-color: rgba(0, 245, 212, 0.35);
+    --accent-color: #00f5d4;
+    --accent-glow: #00f5d4;
+    --accent-focus-ring: rgba(0, 245, 212, 0.4);
+    --accent-gradient: linear-gradient(135deg, #00f5d4, #7b2cbf);
+    --title-gradient: linear-gradient(135deg, #00f5d4 0%, #7b2cbf 50%, #f72585 100%);
+    --btn-primary-bg: linear-gradient(135deg, #00f5d4, #00bbf9);
+    --btn-primary-text: #050a1b;
+    --gift-box-bg: linear-gradient(135deg, #3a0ca3, #4361ee);
+    --gift-box-lid: linear-gradient(135deg, #7209b7, #3a0ca3);
+    --gift-ribbon: #00f5d4;
+    --cake-tier-base: #1e1b4b;
+    --cake-tier-mid: #4338ca;
+    --cake-tier-top: #00f5d4;
+}
+
+/* 4. 🎈 Kawaii Pastel Dream (Cute Party & Soft Candy) */
+body.theme-pastel {
+    --bg-color: #1a162b;
+    --text-color: #ffffff;
+    --text-muted: #d8b4e2;
+    --card-glass-bg: rgba(45, 30, 70, 0.72);
+    --card-glass-hover: rgba(65, 45, 95, 0.82);
+    --border-color: rgba(255, 182, 217, 0.35);
+    --accent-color: #ff99c8;
+    --accent-glow: #ffcbf2;
+    --accent-focus-ring: rgba(255, 153, 200, 0.35);
+    --accent-gradient: linear-gradient(135deg, #ff99c8, #d0b4dc);
+    --title-gradient: linear-gradient(135deg, #ffffff 20%, #ffcbf2 70%, #e7c6ff 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ff99c8, #b5179e);
+    --btn-primary-text: #ffffff;
+    --gift-box-bg: linear-gradient(135deg, #e0aaff, #c77dff);
+    --gift-box-lid: linear-gradient(135deg, #c77dff, #9d4edd);
+    --gift-ribbon: #ffea79;
+    --cake-tier-base: #e0aaff;
+    --cake-tier-mid: #ffcbf2;
+    --cake-tier-top: #ffffff;
+}
+
+/* 5. 🌌 Cosmic Galaxy & Nebula (Deep Space Starlight) */
+body.theme-galaxy {
+    --bg-color: #050515;
+    --text-color: #f1f5f9;
+    --text-muted: #94a3b8;
+    --card-glass-bg: rgba(15, 15, 40, 0.8);
+    --card-glass-hover: rgba(25, 25, 60, 0.9);
+    --border-color: rgba(147, 51, 234, 0.35);
+    --accent-color: #a855f7;
+    --accent-glow: #c084fc;
+    --accent-focus-ring: rgba(168, 85, 247, 0.4);
+    --accent-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+    --title-gradient: linear-gradient(135deg, #ffffff 10%, #c084fc 60%, #6366f1 100%);
+    --btn-primary-bg: linear-gradient(135deg, #6366f1, #a855f7);
+    --btn-primary-text: #ffffff;
+    --gift-box-bg: linear-gradient(135deg, #1e1b4b, #312e81);
+    --gift-box-lid: linear-gradient(135deg, #312e81, #4338ca);
+    --gift-ribbon: #c084fc;
+    --cake-tier-base: #1e1b4b;
+    --cake-tier-mid: #4338ca;
+    --cake-tier-top: #a855f7;
+}
+
+/* 6. 🌿 Tropical Emerald & Fairy Lights (Boho Chic & Gold) */
+body.theme-emerald {
+    --bg-color: #061712;
+    --text-color: #f2fbf7;
+    --text-muted: #86efac;
+    --card-glass-bg: rgba(8, 38, 28, 0.78);
+    --card-glass-hover: rgba(12, 54, 40, 0.88);
+    --border-color: rgba(52, 211, 153, 0.3);
+    --accent-color: #10b981;
+    --accent-glow: #34d399;
+    --accent-focus-ring: rgba(16, 185, 129, 0.35);
+    --accent-gradient: linear-gradient(135deg, #10b981, #f59e0b);
+    --title-gradient: linear-gradient(135deg, #ffffff 15%, #34d399 70%, #f59e0b 100%);
+    --btn-primary-bg: linear-gradient(135deg, #10b981, #059669);
+    --btn-primary-text: #ffffff;
+    --gift-box-bg: linear-gradient(135deg, #064e3b, #047857);
+    --gift-box-lid: linear-gradient(135deg, #047857, #065f46);
+    --gift-ribbon: #fbbf24;
+    --cake-tier-base: #064e3b;
+    --cake-tier-mid: #059669;
+    --cake-tier-top: #34d399;
+}
+
+/* =========================================================
+   6 EXTRA THEMES (7-12)
+   ========================================================= */
+
+/* 7. 🌅 Sunset Beach (Amber, Coral & Dusk Purple) */
+body.theme-sunset {
+    --bg-color: #1d0b1f;
+    --text-color: #fff6ee;
+    --text-muted: #f5b48a;
+    --card-glass-bg: rgba(58, 20, 40, 0.74);
+    --card-glass-hover: rgba(80, 30, 50, 0.85);
+    --border-color: rgba(255, 138, 76, 0.38);
+    --accent-color: #ff8a4c;
+    --accent-glow: #ffb347;
+    --accent-focus-ring: rgba(255, 138, 76, 0.35);
+    --accent-gradient: linear-gradient(135deg, #ff5e62, #ffb347);
+    --title-gradient: linear-gradient(135deg, #ffffff 10%, #ffb347 55%, #ff5e62 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ff5e62, #ffb347);
+    --btn-primary-text: #2a0e14;
+    --gift-box-bg: linear-gradient(135deg, #ff7a45, #c2185b);
+    --gift-box-lid: linear-gradient(135deg, #c2185b, #7b1fa2);
+    --gift-ribbon: #ffe082;
+    --cake-tier-base: #7b1fa2;
+    --cake-tier-mid: #e64a19;
+    --cake-tier-top: #ffb347;
+}
+
+/* 8. 🍭 Candy Pop (Bubblegum, Mint & Lemon) */
+body.theme-candy {
+    --bg-color: #25103f;
+    --text-color: #ffffff;
+    --text-muted: #f6c1ff;
+    --card-glass-bg: rgba(66, 28, 104, 0.72);
+    --card-glass-hover: rgba(88, 40, 132, 0.84);
+    --border-color: rgba(255, 121, 198, 0.45);
+    --accent-color: #ff79c6;
+    --accent-glow: #8be9fd;
+    --accent-focus-ring: rgba(255, 121, 198, 0.4);
+    --accent-gradient: linear-gradient(135deg, #ff79c6, #ffb86c);
+    --title-gradient: linear-gradient(135deg, #ffffff 5%, #8be9fd 40%, #ff79c6 75%, #ffb86c 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ff79c6, #ffb86c);
+    --btn-primary-text: #2b0f3f;
+    --gift-box-bg: linear-gradient(135deg, #8be9fd, #50a7d8);
+    --gift-box-lid: linear-gradient(135deg, #ff79c6, #e0489e);
+    --gift-ribbon: #f1fa8c;
+    --cake-tier-base: #ff79c6;
+    --cake-tier-mid: #8be9fd;
+    --cake-tier-top: #f1fa8c;
+}
+
+/* 9. 🌊 Ocean Wave (Deep Sea, Aqua & Foam) */
+body.theme-ocean {
+    --bg-color: #04141f;
+    --text-color: #eaf9ff;
+    --text-muted: #8fd0e6;
+    --card-glass-bg: rgba(8, 40, 60, 0.74);
+    --card-glass-hover: rgba(12, 58, 86, 0.86);
+    --border-color: rgba(56, 189, 248, 0.38);
+    --accent-color: #22d3ee;
+    --accent-glow: #67e8f9;
+    --accent-focus-ring: rgba(34, 211, 238, 0.35);
+    --accent-gradient: linear-gradient(135deg, #0ea5e9, #22d3ee);
+    --title-gradient: linear-gradient(135deg, #ffffff 10%, #67e8f9 55%, #0ea5e9 100%);
+    --btn-primary-bg: linear-gradient(135deg, #0ea5e9, #22d3ee);
+    --btn-primary-text: #04141f;
+    --gift-box-bg: linear-gradient(135deg, #0ea5e9, #0369a1);
+    --gift-box-lid: linear-gradient(135deg, #0369a1, #075985);
+    --gift-ribbon: #e0f7ff;
+    --cake-tier-base: #0c4a6e;
+    --cake-tier-mid: #0ea5e9;
+    --cake-tier-top: #e0f7ff;
+}
+
+/* 10. ❄️ Ice Crystal (Frost, Silver & Steel Blue) */
+body.theme-ice {
+    --bg-color: #0a1220;
+    --text-color: #f1f7ff;
+    --text-muted: #a5b8d6;
+    --card-glass-bg: rgba(20, 32, 54, 0.76);
+    --card-glass-hover: rgba(30, 46, 76, 0.86);
+    --border-color: rgba(186, 214, 255, 0.4);
+    --accent-color: #bcd7ff;
+    --accent-glow: #e6f0ff;
+    --accent-focus-ring: rgba(188, 215, 255, 0.35);
+    --accent-gradient: linear-gradient(135deg, #93c5fd, #e0ecff);
+    --title-gradient: linear-gradient(135deg, #ffffff 15%, #bcd7ff 60%, #93c5fd 100%);
+    --btn-primary-bg: linear-gradient(135deg, #93c5fd, #e0ecff);
+    --btn-primary-text: #0a1220;
+    --gift-box-bg: linear-gradient(135deg, #cfe0ff, #93a9cf);
+    --gift-box-lid: linear-gradient(135deg, #93a9cf, #6b83ad);
+    --gift-ribbon: #ffffff;
+    --cake-tier-base: #6b83ad;
+    --cake-tier-mid: #bcd7ff;
+    --cake-tier-top: #ffffff;
+}
+
+/* 11. 🌸 Sakura Garden (Cherry Blossom & Soft Plum) */
+body.theme-sakura {
+    --bg-color: #1f1220;
+    --text-color: #fff3f8;
+    --text-muted: #f4bfd6;
+    --card-glass-bg: rgba(52, 26, 50, 0.74);
+    --card-glass-hover: rgba(74, 38, 70, 0.85);
+    --border-color: rgba(255, 183, 213, 0.4);
+    --accent-color: #ffb7d5;
+    --accent-glow: #ffd6e8;
+    --accent-focus-ring: rgba(255, 183, 213, 0.35);
+    --accent-gradient: linear-gradient(135deg, #ffb7d5, #f48fb1);
+    --title-gradient: linear-gradient(135deg, #ffffff 10%, #ffd6e8 55%, #f48fb1 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ffb7d5, #f48fb1);
+    --btn-primary-text: #3a1230;
+    --gift-box-bg: linear-gradient(135deg, #ffc4dd, #f48fb1);
+    --gift-box-lid: linear-gradient(135deg, #f48fb1, #d81b60);
+    --gift-ribbon: #fff59d;
+    --cake-tier-base: #a64d79;
+    --cake-tier-mid: #ffb7d5;
+    --cake-tier-top: #fff0f6;
+}
+
+/* 12. 🕹️ Retro Arcade (Synthwave Grid & Neon Sunset) */
+body.theme-retro {
+    --bg-color: #0d0221;
+    --text-color: #f5e9ff;
+    --text-muted: #b8a0d9;
+    --card-glass-bg: rgba(26, 8, 56, 0.82);
+    --card-glass-hover: rgba(38, 12, 78, 0.9);
+    --border-color: rgba(255, 42, 109, 0.5);
+    --accent-color: #ff2a6d;
+    --accent-glow: #05d9e8;
+    --accent-focus-ring: rgba(255, 42, 109, 0.4);
+    --accent-gradient: linear-gradient(135deg, #ff2a6d, #ffd300);
+    --title-gradient: linear-gradient(135deg, #05d9e8 10%, #ffffff 45%, #ff2a6d 80%, #ffd300 100%);
+    --btn-primary-bg: linear-gradient(135deg, #ff2a6d, #ffd300);
+    --btn-primary-text: #0d0221;
+    --gift-box-bg: linear-gradient(135deg, #ff2a6d, #a1113f);
+    --gift-box-lid: linear-gradient(135deg, #05d9e8, #04899a);
+    --gift-ribbon: #ffd300;
+    --cake-tier-base: #3d0a73;
+    --cake-tier-mid: #ff2a6d;
+    --cake-tier-top: #ffd300;
+}

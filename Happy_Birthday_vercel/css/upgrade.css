@@ -1,0 +1,65 @@
+/* ===== Upgrade layer: polish, motion, accessibility ===== */
+html { scroll-behavior: smooth; }
+body:not(#cx) #studio-view::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+        radial-gradient(40vmax 40vmax at 15% 20%, rgba(255,120,200,.16), transparent 60%),
+        radial-gradient(45vmax 45vmax at 85% 10%, rgba(80,160,255,.14), transparent 60%),
+        radial-gradient(40vmax 40vmax at 60% 90%, rgba(255,200,80,.12), transparent 60%);
+}
+
+/* layout picker cards */
+.theme-option { position: relative; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, border-color .25s; will-change: transform; }
+.theme-option:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+.theme-option:focus-visible { outline: 3px solid var(--accent-color, #ffd700); outline-offset: 3px; }
+.theme-option.active { animation: wsPick .45s cubic-bezier(.2,1.4,.3,1); }
+@keyframes wsPick { 0% { transform: scale(.94); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+.theme-color-swatch { transition: transform .4s; }
+.theme-option:hover .theme-color-swatch { transform: rotate(25deg) scale(1.12); }
+
+.ws-picker-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 6px 0 12px; }
+.ws-picked { font-size: .9rem; opacity: .85; }
+.ws-picked b { color: var(--accent-color, #ffd700); }
+.ws-surprise { border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.07); color: inherit; padding: 8px 16px; border-radius: 999px; font: inherit; font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+.ws-surprise:hover { transform: translateY(-2px) rotate(-1.5deg); background: rgba(255,255,255,.14); }
+.ws-surprise:active { transform: scale(.96); }
+
+/* buttons */
+.btn { transition: transform .2s, box-shadow .25s, filter .2s; }
+.btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn:focus-visible, .form-control:focus-visible, .preset-btn:focus-visible { outline: 3px solid var(--accent-color, #ffd700); outline-offset: 2px; }
+.glass-card { transition: box-shadow .3s, border-color .3s; }
+
+/* share modal extras */
+.ws-share-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.ws-share-row a, .ws-share-row button { flex: 1 1 130px; text-align: center; text-decoration: none; padding: 10px 12px; border-radius: 12px; font-weight: 700; border: 0; cursor: pointer; font: inherit; font-weight: 700; color: #fff; }
+.ws-wa { background: #25d366; } .ws-tg { background: #229ed9; } .ws-native { background: #6c5ce7; }
+.ws-warn { margin-top: 8px; padding: 8px 12px; border-radius: 10px; background: rgba(255,170,0,.14); border: 1px solid rgba(255,170,0,.4); font-size: .85rem; }
+
+/* fullscreen button */
+.ws-fs-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.35); color: #fff; cursor: pointer; backdrop-filter: blur(8px); font-size: 1.1rem; margin-right: 8px; }
+.ws-fs-btn:hover { background: rgba(255,255,255,.18); }
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-option.active { animation: none; }
+    html { scroll-behavior: auto; }
+}
+
+/* ---------- Custom audio upload + post description ---------- */
+.audio-upload-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+.btn-audio-upload { flex: 0 1 auto; padding: 11px 18px; font-size: .9rem; }
+.audio-file-name {
+    flex: 1 1 140px; min-width: 0; font-size: .85rem; font-weight: 600; color: var(--accent-color, #ffd700);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.audio-remove {
+    background: rgba(255, 71, 87, .14); color: inherit; border: 1px solid rgba(255, 71, 87, .5);
+    border-radius: 999px; padding: 7px 14px; font: 600 .8rem var(--font-primary, sans-serif); cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+.audio-remove:hover { background: rgba(255, 71, 87, .32); transform: translateY(-1px); }
+#post-text-hint.warn { color: #ff9f43; }
+
+/* Tune dropdown was squeezed to ~90px by the Listen button, hiding the selected tune / track name */
+.tune-selector-wrap .cs { flex: 1 1 200px; min-width: 0; }

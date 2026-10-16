@@ -1,0 +1,618 @@
+/* =========================================================
+   6 DISTINCT VISUAL & STRUCTURAL LAYOUT TEMPLATES
+   (css/templates.css)
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. VIP MAGAZINE / MOVIE POSTER LAYOUT (template-magazine)
+   --------------------------------------------------------- */
+body.template-magazine {
+    --bg-color: #070709;
+    --accent-color: #ffd700;
+}
+
+body.template-magazine .celebration-content-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #16151f 0%, #0d0c13 100%);
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    border-radius: 28px;
+    padding: 40px 35px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+body.template-magazine .magazine-masthead {
+    text-align: center;
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+body.template-magazine .masthead-tag {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ffd700;
+}
+
+body.template-magazine .masthead-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #ffffff 20%, #ffd700 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 5px;
+}
+
+body.template-magazine .polaroid-frame {
+    width: 100%;
+    transform: none !important;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 20px;
+}
+
+body.template-magazine .photo-wrapper {
+    height: 380px;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+body.template-magazine .cake-card {
+    width: 100%;
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body.template-magazine .cake-container {
+    transform: scale(0.85);
+    margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   2. VINTAGE SCRAPBOOK & MEMORY ALBUM (template-scrapbook)
+   --------------------------------------------------------- */
+body.template-scrapbook {
+    --bg-color: #2b211b;
+    /* NOTE: dark brown text applies ONLY inside the book card (below),
+       not the whole page - otherwise Studio labels turn dark on dark. */
+}
+
+body.template-scrapbook .celebration-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 0;
+    max-width: 950px;
+    margin: 0 auto;
+    background: #fcf9f2;
+    border-radius: 20px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
+    color: #3e2723;
+    --text-color: #3e2723;
+    overflow: hidden;
+    position: relative;
+    border: 8px solid #5d4037;
+}
+
+/* Book binding spine line */
+body.template-scrapbook .celebration-content-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 47%;
+    width: 30px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.15), rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.15));
+    pointer-events: none;
+}
+
+body.template-scrapbook .cake-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 40px 30px;
+    border-right: 1px dashed #d7ccc8;
+}
+
+body.template-scrapbook .wish-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 40px 30px;
+    color: #3e2723;
+}
+
+body.template-scrapbook .polaroid-frame {
+    background: #fff;
+    border: 1px solid #d7ccc8;
+    transform: rotate(-3deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+body.template-scrapbook .polaroid-frame::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 35%;
+    width: 70px;
+    height: 22px;
+    background: rgba(254, 215, 102, 0.7);
+    transform: rotate(2deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+body.template-scrapbook .custom-message-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: #3e2723;
+    line-height: 1.5;
+}
+
+body.template-scrapbook .quote-mark {
+    color: #8d6e63;
+}
+
+/* ---------------------------------------------------------
+   3. CENTERSTAGE CONCERT ARENA (template-stage)
+   --------------------------------------------------------- */
+body.template-stage {
+    --bg-color: #08031a;
+    --accent-color: #ff007f;
+}
+
+body.template-stage .celebration-content-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+body.template-stage .stage-spotlight {
+    position: absolute;
+    top: -80px;
+    width: 280px;
+    height: 450px;
+    background: radial-gradient(ellipse at top, rgba(255, 0, 127, 0.35) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+body.template-stage .cake-card {
+    order: 1;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(25, 10, 50, 0.7);
+    border: 2px solid #ff007f;
+    border-radius: 30px;
+    box-shadow: 0 0 35px rgba(255, 0, 127, 0.4), inset 0 0 25px rgba(255, 0, 127, 0.2);
+    margin-bottom: 30px;
+}
+
+body.template-stage .wish-card {
+    order: 2;
+    width: 100%;
+    background: rgba(18, 10, 36, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+}
+
+body.template-stage .photo-wrapper {
+    height: 320px;
+}
+
+/* ---------------------------------------------------------
+   4. CYBERPUNK GAMER HUD TERMINAL (template-cyber)
+   --------------------------------------------------------- */
+body.template-cyber {
+    --bg-color: #050811;
+    --accent-color: #00f5d4;
+}
+
+body.template-cyber .celebration-content-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 25px;
+    border: 1px solid #00f5d4;
+    background: rgba(5, 12, 28, 0.85);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(0, 245, 212, 0.25), inset 0 0 20px rgba(0, 245, 212, 0.08);
+    position: relative;
+}
+
+body.template-cyber .celebration-content-grid::before {
+    content: 'PLAYER PROFILE // XP 100% // LEVEL 24 UNLOCKED';
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: #00f5d4;
+    color: #050811;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    letter-spacing: 1.5px;
+    font-family: monospace;
+}
+
+body.template-cyber .photo-wrapper {
+    border-radius: 4px;
+    border: 2px solid #00f5d4;
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+}
+
+body.template-cyber .polaroid-frame {
+    background: #091224;
+    border: 1px solid #00f5d4;
+    transform: none;
+}
+
+body.template-cyber .caption-date {
+    color: #00f5d4;
+    font-family: monospace;
+}
+
+body.template-cyber .custom-message-text {
+    font-family: monospace;
+    color: #a7f3d0;
+    border-left: 2px solid #00f5d4;
+    padding-left: 14px;
+}
+
+/* ---------------------------------------------------------
+   5. MODERN GLASS STORY CARD (template-story - Mobile 9:16)
+   --------------------------------------------------------- */
+body.template-story {
+    --bg-color: #0f1016;
+    --accent-color: #f43f5e;
+}
+
+body.template-story .celebration-content-grid {
+    display: flex;
+    flex-direction: column;
+    max-width: 440px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 36px;
+    padding: 24px 20px 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+body.template-story .story-progress-bar-wrap {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+body.template-story .story-bar {
+    height: 3px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+body.template-story .story-bar.active::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background: #fff;
+    animation: storyBarFill 4s linear infinite;
+}
+
+@keyframes storyBarFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+body.template-story .photo-wrapper {
+    height: 380px;
+    border-radius: 24px;
+}
+
+body.template-story .cake-card {
+    order: 2;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 24px;
+    padding: 16px;
+    margin-top: 18px;
+}
+
+body.template-story .cake-container {
+    transform: scale(0.75);
+    margin-bottom: -15px;
+}
+
+/* ---------------------------------------------------------
+   6. CLASSIC ROYAL GALA (template-classic)
+   --------------------------------------------------------- */
+body.template-classic .celebration-content-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 30px;
+}
+
+/* =========================================================
+   TEMPLATE MOBILE RESPONSIVE OVERRIDES
+   (fixed pixel column widths above don't collapse on their own)
+   ========================================================= */
+@media (max-width: 900px) {
+    body.template-cyber .celebration-content-grid,
+    body.template-classic .celebration-content-grid {
+        grid-template-columns: 1fr;
+        padding: 22px;
+        gap: 20px;
+    }
+
+    body.template-scrapbook .celebration-content-grid {
+        grid-template-columns: 1fr;
+        border-width: 5px;
+    }
+
+    body.template-scrapbook .celebration-content-grid::after {
+        display: none;
+    }
+
+    body.template-scrapbook .cake-card {
+        border-right: none;
+        border-bottom: 1px dashed #d7ccc8;
+    }
+
+    body.template-magazine .celebration-content-grid {
+        padding: 28px 20px;
+    }
+
+    body.template-magazine .masthead-title {
+        font-size: 2.3rem;
+    }
+
+    body.template-stage .stage-spotlight {
+        width: 200px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    body.template-magazine .masthead-title {
+        font-size: 1.7rem;
+    }
+
+    body.template-magazine .photo-wrapper,
+    body.template-stage .photo-wrapper,
+    body.template-story .photo-wrapper {
+        height: 240px;
+    }
+
+    body.template-story .celebration-content-grid {
+        padding: 18px 14px 22px;
+        border-radius: 26px;
+    }
+
+    body.template-cyber .celebration-content-grid::before {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+    }
+}
+
+/* =========================================================
+   6 EXTRA LAYOUT TEMPLATES (7-12)
+   ========================================================= */
+
+/* 7. 🌅 SUNSET ARCH (template-sunset): photo on the left in an arch window */
+body.template-sunset .celebration-content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+    gap: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 32px;
+    background: linear-gradient(160deg, rgba(255, 94, 98, 0.14), rgba(123, 31, 162, 0.18));
+    border: 1px solid rgba(255, 138, 76, 0.35);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+body.template-sunset .wish-card { order: 1; }
+body.template-sunset .cake-card { order: 2; }
+body.template-sunset .polaroid-frame {
+    background: transparent; padding: 0; box-shadow: none; transform: none !important;
+}
+body.template-sunset .photo-wrapper {
+    height: 340px; max-width: 280px; margin: 0 auto;
+    border-radius: 999px 999px 24px 24px;
+    border: 4px solid #ffb347;
+    box-shadow: 0 0 0 8px rgba(255, 138, 76, 0.18), 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* 8. 🍭 CANDY BUBBLE (template-candy): single bubbly column, round photo */
+body.template-candy .celebration-content-grid {
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 640px; margin: 0 auto; padding: 34px 26px;
+    border-radius: 44px;
+    background: linear-gradient(180deg, rgba(255, 121, 198, 0.16), rgba(139, 233, 253, 0.12));
+    border: 4px dashed rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 0 8px rgba(255, 121, 198, 0.25), 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+body.template-candy .wish-card { order: 1; width: 100%; border-radius: 34px; }
+body.template-candy .cake-card { order: 2; width: 100%; margin-top: 22px; border-radius: 34px; }
+body.template-candy .polaroid-frame {
+    background: transparent; padding: 0; box-shadow: none; transform: none !important;
+}
+body.template-candy .photo-wrapper {
+    width: 250px; height: 250px; max-width: 100%; margin: 0 auto;
+    border-radius: 50%; border: 8px solid #fff;
+    box-shadow: 0 0 0 8px #ff79c6, 0 0 0 16px #8be9fd, 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* 9. 🌊 OCEAN BLOB (template-ocean): blob-shaped photo, bubbles */
+body.template-ocean {
+    background-image:
+        radial-gradient(circle at 12% 18%, rgba(34, 211, 238, 0.16) 0 60px, transparent 62px),
+        radial-gradient(circle at 88% 30%, rgba(14, 165, 233, 0.16) 0 90px, transparent 92px),
+        radial-gradient(circle at 70% 85%, rgba(103, 232, 249, 0.12) 0 50px, transparent 52px);
+    background-attachment: fixed;
+}
+body.template-ocean .celebration-content-grid {
+    display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+    gap: 28px; max-width: 980px; margin: 0 auto;
+}
+body.template-ocean .cake-card,
+body.template-ocean .wish-card {
+    border: 1px solid rgba(103, 232, 249, 0.4);
+    border-radius: 36px 36px 36px 8px;
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.22);
+}
+body.template-ocean .polaroid-frame {
+    background: transparent; padding: 0; box-shadow: none; transform: none !important;
+}
+body.template-ocean .photo-wrapper {
+    height: 300px;
+    border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+    border: 4px solid #67e8f9;
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.45);
+}
+
+/* 10. ❄️ ICE FRAME (template-ice): sharp, minimal, museum-style frame */
+body.template-ice .celebration-content-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    gap: 0; max-width: 940px; margin: 0 auto;
+    border: 1px solid rgba(188, 215, 255, 0.5);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 0 0 10px rgba(10, 18, 32, 0.9), inset 0 0 0 11px rgba(188, 215, 255, 0.3);
+    padding: 22px;
+}
+body.template-ice .wish-card { order: 1; background: transparent; border: none; box-shadow: none; }
+body.template-ice .cake-card {
+    order: 2; background: transparent; border: none; box-shadow: none;
+    border-left: 1px solid rgba(188, 215, 255, 0.3); border-radius: 0;
+}
+body.template-ice .polaroid-frame {
+    background: #f4f8ff; padding: 12px 12px 22px; border-radius: 2px; transform: none !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+}
+body.template-ice .photo-wrapper { height: 320px; border-radius: 0; }
+body.template-ice .polaroid-caption { color: #24324d; }
+
+/* 11. 🌸 SAKURA OVAL (template-sakura): oval portrait, soft stacked cards */
+body.template-sakura .celebration-content-grid {
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 680px; margin: 0 auto; padding: 34px 26px;
+    border-radius: 200px 200px 36px 36px / 90px 90px 36px 36px;
+    background: linear-gradient(180deg, rgba(255, 183, 213, 0.16), rgba(255, 183, 213, 0.04));
+    border: 1px solid rgba(255, 183, 213, 0.45);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 50px rgba(255, 183, 213, 0.15);
+}
+body.template-sakura .wish-card { order: 1; width: 100%; }
+body.template-sakura .cake-card { order: 2; width: 100%; margin-top: 20px; }
+body.template-sakura .polaroid-frame {
+    background: transparent; padding: 0; box-shadow: none; transform: none !important;
+}
+body.template-sakura .photo-wrapper {
+    width: 250px; height: 320px; max-width: 100%; margin: 0 auto;
+    border-radius: 50% / 45%;
+    border: 5px solid #ffd6e8;
+    box-shadow: 0 0 0 7px rgba(255, 183, 213, 0.25), 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* 12. 🕹️ RETRO ARCADE (template-retro): grid floor, hard neon shadows */
+body.template-retro {
+    background-image:
+        linear-gradient(rgba(5, 217, 232, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5, 217, 232, 0.14) 1px, transparent 1px);
+    background-size: 44px 44px;
+    background-attachment: fixed;
+}
+body.template-retro .celebration-content-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+    gap: 26px; max-width: 980px; margin: 0 auto;
+}
+body.template-retro .cake-card,
+body.template-retro .wish-card {
+    border: 3px solid #05d9e8; border-radius: 6px;
+    box-shadow: 8px 8px 0 #ff2a6d;
+}
+body.template-retro .wish-card { order: 1; }
+body.template-retro .cake-card { order: 2; }
+body.template-retro .polaroid-frame {
+    background: #14052e; padding: 10px; border-radius: 0; transform: none !important;
+    border: 3px solid #ffd300; box-shadow: 6px 6px 0 #05d9e8;
+}
+body.template-retro .photo-wrapper { height: 300px; border-radius: 0; }
+body.template-retro .big-birthday-heading { text-transform: uppercase; letter-spacing: 2px; }
+
+@media (max-width: 900px) {
+    body.template-sunset .celebration-content-grid,
+    body.template-ocean .celebration-content-grid,
+    body.template-ice .celebration-content-grid,
+    body.template-retro .celebration-content-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+        padding: 18px; gap: 20px;
+    }
+    body.template-ice .cake-card { border-left: none; border-top: 1px solid rgba(188, 215, 255, 0.3); }
+    body.template-sakura .celebration-content-grid { border-radius: 120px 120px 30px 30px / 60px 60px 30px 30px; }
+}
+@media (max-width: 480px) {
+    body.template-candy .celebration-content-grid { padding: 22px 14px; border-radius: 32px; }
+    body.template-candy .photo-wrapper { width: 200px; height: 200px; }
+    body.template-sakura .celebration-content-grid { padding: 40px 14px 22px; }
+    body.template-sakura .photo-wrapper { width: 210px; height: 270px; }
+    body.template-sunset .photo-wrapper,
+    body.template-ocean .photo-wrapper,
+    body.template-ice .photo-wrapper,
+    body.template-retro .photo-wrapper { height: 250px; }
+}
+
+/* Readable captions + top-aligned cards for the extra templates */
+body.template-sunset .polaroid-caption, body.template-sunset .caption-date,
+body.template-candy .polaroid-caption, body.template-candy .caption-date,
+body.template-ocean .polaroid-caption, body.template-ocean .caption-date,
+body.template-sakura .polaroid-caption, body.template-sakura .caption-date,
+body.template-retro .polaroid-caption, body.template-retro .caption-date {
+    color: var(--text-color, #fff);
+}
+body.template-retro .caption-date { color: #ffd300; }
+body.template-sunset .celebration-content-grid,
+body.template-ocean .celebration-content-grid,
+body.template-retro .celebration-content-grid { align-items: start; }
+
+/* ---------- Readability fixes ---------- */
+/* Magazine: photo caption sits on the dark card, so it needs light text */
+body.template-magazine .polaroid-caption,
+body.template-magazine .caption-date { color: #f3e3a0; }
+
+/* Vintage Book: everything inside the cream page must be dark-on-light */
+body.template-scrapbook .celebration-content-grid {
+    --text-muted: #6d4c41;
+}
+body.template-scrapbook .cake-instruction { color: #6d4c41; }
+body.template-scrapbook .cake-strawberries,
+body.template-scrapbook .cake-decor { color: inherit; }
+body.template-scrapbook .quote-widget,
+body.template-scrapbook .quote-widget-header,
+body.template-scrapbook .quote-widget-label { color: #8d3b2a; }
+body.template-scrapbook .quote-widget { background: rgba(93, 64, 55, 0.08); border-color: rgba(93, 64, 55, 0.25); }
+body.template-scrapbook .quote-widget-text { color: #3e2723; }
+body.template-scrapbook .quote-widget-author { color: #6d4c41; }
+body.template-scrapbook .quote-refresh-btn { background: rgba(93, 64, 55, 0.12); color: #3e2723; }
+body.template-scrapbook .quote-refresh-btn:hover { background: #8d3b2a; color: #fff; }
+body.template-ice .caption-stars { color: #b36b00; }

@@ -1,0 +1,116 @@
+/* =========================================================
+   ADVANCED STUDIO UI LAYER (studio view only)
+   Aurora background, glass depth, glow focus, motion polish
+   ========================================================= */
+
+/* Animated aurora behind the studio */
+#studio-view { position: relative; isolation: isolate; }
+#studio-view::before, #studio-view::after {
+    content: ""; position: fixed; z-index: -1; pointer-events: none;
+    width: 55vmax; height: 55vmax; border-radius: 50%; filter: blur(90px); opacity: .28;
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+#studio-view::before { top: -18vmax; left: -14vmax; background: radial-gradient(circle, #7c3aed, transparent 65%); }
+#studio-view::after  { bottom: -20vmax; right: -14vmax; background: radial-gradient(circle, #f59e0b, transparent 65%); animation-delay: -9s; }
+@keyframes auroraDrift { to { transform: translate3d(8vmax, 6vmax, 0) scale(1.15); } }
+
+/* Hero header */
+#studio-view .studio-header h1 {
+    background: linear-gradient(100deg, #fff 10%, #ffd86b 45%, #ff8fd0 80%);
+    background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    letter-spacing: -.02em; animation: titleShine 6s linear infinite;
+}
+@keyframes titleShine { to { background-position: 200% center; } }
+#studio-view .studio-badge { backdrop-filter: blur(10px); box-shadow: 0 0 24px rgba(255, 200, 80, .18); }
+
+/* Glass card with cursor spotlight */
+#studio-view .glass-card {
+    position: relative; overflow: hidden;
+    background: linear-gradient(160deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 24px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
+    backdrop-filter: blur(18px) saturate(140%);
+}
+#studio-view .glass-card::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255,220,120,.10), transparent 60%);
+}
+#studio-view .glass-card:hover::before { opacity: 1; }
+
+/* Form groups: numbered section feel + refined labels */
+#studio-view .form-group { transition: transform .3s cubic-bezier(.16,1,.3,1); }
+#studio-view .form-group label { letter-spacing: .02em; font-weight: 600; opacity: .92; }
+#studio-view .form-control {
+    background: rgba(10, 8, 24, .55); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 14px; transition: border-color .25s, box-shadow .25s, background .25s;
+}
+#studio-view .form-control:hover { border-color: rgba(255,255,255,.28); }
+#studio-view .form-control:focus {
+    border-color: #ffc94a; background: rgba(10, 8, 24, .75);
+    box-shadow: 0 0 0 4px rgba(255, 201, 74, .16), 0 8px 24px rgba(255, 201, 74, .12); outline: none;
+}
+#studio-view select.form-control {
+    appearance: none; -webkit-appearance: none; padding-right: 42px; cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffc94a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat; background-position: right 14px center;
+}
+
+/* Preset chips */
+#studio-view .preset-btn {
+    border-radius: 999px; backdrop-filter: blur(8px);
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s, background .25s;
+}
+#studio-view .preset-btn:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 8px 20px rgba(255, 201, 74, .2); }
+#studio-view .preset-btn:active { transform: scale(.96); }
+
+/* Message box + live counter */
+.msg-counter { display: flex; justify-content: space-between; font-size: .78rem; opacity: .65; margin-top: 6px; padding: 0 4px; }
+.msg-counter.warn { color: #ffb4a2; opacity: 1; }
+
+/* Layout / theme cards: lift + glow */
+#studio-view .theme-option {
+    border-radius: 16px; backdrop-filter: blur(8px);
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s, border-color .3s;
+}
+#studio-view .theme-option:hover { transform: translateY(-5px) rotate(-.4deg); box-shadow: 0 16px 34px rgba(0,0,0,.4); }
+#studio-view .theme-option.active { box-shadow: 0 0 0 1px #ffc94a, 0 12px 34px rgba(255, 201, 74, .28); }
+
+/* Buttons: gradient, shine, press */
+#studio-view .btn { border-radius: 14px; letter-spacing: .01em; }
+#studio-view .btn-primary {
+    background: linear-gradient(120deg, #ffb703, #ff7a59 55%, #ff4d9d);
+    background-size: 160% 100%; color: #1b1030; font-weight: 700;
+    box-shadow: 0 10px 30px rgba(255, 122, 89, .35);
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s, background-position .5s;
+}
+#studio-view .btn-primary:hover { background-position: 100% 0; transform: translateY(-3px); box-shadow: 0 16px 40px rgba(255, 122, 89, .5); }
+#studio-view .btn-secondary { backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); }
+#studio-view .btn-secondary:hover { transform: translateY(-2px); border-color: #ffc94a; box-shadow: 0 10px 24px rgba(0,0,0,.3); }
+#studio-view .btn:active { transform: translateY(0) scale(.97); }
+#studio-view .btn:focus-visible, #studio-view .preset-btn:focus-visible, #studio-view .theme-option:focus-visible {
+    outline: 2px solid #ffc94a; outline-offset: 3px;
+}
+
+/* Playing state for tone preview button */
+.btn-tune-preview.is-playing { border-color: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,.18); animation: tunePulse 1.2s ease-in-out infinite; }
+@keyframes tunePulse { 50% { box-shadow: 0 0 0 9px rgba(52,211,153,0); } }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#7c3aed, #ff8fd0); border-radius: 10px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-track { background: transparent; }
+::selection { background: rgba(255, 201, 74, .35); }
+
+@media (max-width: 640px) {
+    #studio-view::before, #studio-view::after { filter: blur(60px); }
+    #studio-view .theme-option:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #studio-view::before, #studio-view::after, #studio-view .studio-header h1, .btn-tune-preview.is-playing { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+}

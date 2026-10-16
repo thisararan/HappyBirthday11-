@@ -1,0 +1,152 @@
+/* =========================================================
+   PREMIUM CELEBRATION LAYER (recipient view + global polish)
+   Uses each theme's own --accent-* variables, so all 12 themes benefit.
+   ========================================================= */
+
+/* ---------- Ambient glow + floating dust ---------- */
+#recipient-view { position: relative; isolation: isolate; }
+#recipient-view::before, #recipient-view::after {
+    content: ""; position: fixed; z-index: -1; pointer-events: none;
+    width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(100px); opacity: .22;
+    background: radial-gradient(circle, var(--accent-glow, #ffd700), transparent 65%);
+    animation: pmDrift 24s ease-in-out infinite alternate;
+}
+#recipient-view::before { top: -20vmax; left: -16vmax; }
+#recipient-view::after  { bottom: -24vmax; right: -16vmax; animation-delay: -11s; opacity: .16; }
+@keyframes pmDrift { to { transform: translate3d(9vmax, 7vmax, 0) scale(1.18); } }
+
+.pm-dust { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.pm-dust i {
+    position: absolute; bottom: -12px; width: var(--s); height: var(--s); border-radius: 50%;
+    background: var(--accent-glow, #ffd700); opacity: 0; filter: blur(.5px);
+    box-shadow: 0 0 10px var(--accent-glow, #ffd700);
+    animation: pmRise var(--d) linear var(--dl) infinite;
+}
+@keyframes pmRise {
+    0% { transform: translate3d(0, 0, 0); opacity: 0; }
+    12% { opacity: .7; }
+    100% { transform: translate3d(var(--x), -108vh, 0); opacity: 0; }
+}
+
+/* ---------- Glass cards: depth + cursor spotlight ---------- */
+#recipient-view .glass-card {
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(255,255,255,.13);
+    box-shadow: 0 28px 70px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.14);
+    backdrop-filter: blur(18px) saturate(150%);
+    transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s;
+}
+#recipient-view .glass-card::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .35s;
+    background: radial-gradient(440px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.09), transparent 60%);
+}
+#recipient-view .glass-card:hover::after { opacity: 1; }
+
+/* ---------- Countdown ---------- */
+#recipient-view .countdown-item {
+    border-radius: 20px; border: 1px solid rgba(255,255,255,.14);
+    background: linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.02));
+    box-shadow: 0 12px 30px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.14);
+    transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+#recipient-view .countdown-item:hover { transform: translateY(-6px); }
+#recipient-view .countdown-item .num {
+    background: var(--accent-gradient, linear-gradient(135deg, #ffd700, #ff9900));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+    font-variant-numeric: tabular-nums; filter: drop-shadow(0 0 14px var(--accent-focus-ring, rgba(255,215,0,.35)));
+}
+
+/* ---------- Gift box: float, halo, hint ---------- */
+#recipient-view .gift-box-wrapper { position: relative; cursor: pointer; }
+#recipient-view .gift-box-wrapper::before {
+    content: ""; position: absolute; left: 50%; top: 52%; width: 130%; aspect-ratio: 1; translate: -50% -50%;
+    border-radius: 50%; z-index: -1; pointer-events: none;
+    background: radial-gradient(circle, var(--accent-glow, #ffd700) 0%, transparent 62%);
+    opacity: .3; animation: pmHalo 3.2s ease-in-out infinite;
+}
+@keyframes pmHalo { 50% { opacity: .5; transform: scale(1.1); } }
+#recipient-view .gift-box { animation: pmFloat 4s ease-in-out infinite; filter: drop-shadow(0 26px 30px rgba(0,0,0,.45)); }
+@keyframes pmFloat { 50% { transform: translateY(-14px) rotate(-1.2deg); } }
+#recipient-view .gift-box-wrapper:hover .gift-box { animation-duration: 1.6s; }
+#recipient-view .tap-hint { animation: pmHint 2s ease-in-out infinite; letter-spacing: .08em; }
+@keyframes pmHint { 50% { opacity: .45; transform: translateY(5px); } }
+
+/* ---------- Reveal choreography (added by premium.js) ---------- */
+.pm-stagger > * { opacity: 0; transform: translateY(34px) scale(.97); filter: blur(6px); }
+.pm-stagger.pm-in > * {
+    opacity: 1; transform: none; filter: none;
+    transition: opacity .9s ease, transform 1s cubic-bezier(.16,1,.3,1), filter .9s ease;
+    transition-delay: calc(var(--i, 0) * 140ms);
+}
+
+/* ---------- Heading + age pill ---------- */
+#recipient-view .big-birthday-heading { letter-spacing: -.02em; text-shadow: 0 6px 40px rgba(0,0,0,.35); }
+#recipient-view .big-birthday-heading .highlight-name {
+    background: var(--accent-gradient, linear-gradient(135deg, #ffd700, #ff9900));
+    background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    animation: pmShine 5s linear infinite; filter: drop-shadow(0 0 22px var(--accent-focus-ring, rgba(255,215,0,.35)));
+}
+@keyframes pmShine { to { background-position: 220% center; } }
+#recipient-view .age-pill { position: relative; overflow: hidden; box-shadow: 0 0 30px var(--accent-focus-ring, rgba(255,215,0,.3)); }
+#recipient-view .age-pill::after {
+    content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+    background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+    animation: pmSweep 3.6s ease-in-out infinite;
+}
+@keyframes pmSweep { 60%, 100% { transform: translateX(120%); } }
+
+/* ---------- Cake ---------- */
+#recipient-view .cake-container { position: relative; }
+#recipient-view .cake-container::before {
+    content: ""; position: absolute; left: 50%; bottom: -6%; width: 90%; height: 34px; translate: -50% 0;
+    background: radial-gradient(ellipse, rgba(0,0,0,.5), transparent 70%); filter: blur(8px); z-index: -1;
+}
+#recipient-view .candle[data-lit="true"] .flame {
+    filter: drop-shadow(0 0 10px #ffb74d) drop-shadow(0 0 22px rgba(255,160,60,.6));
+    animation: pmFlicker .18s ease-in-out infinite alternate;
+    transform-origin: 50% 100%;
+}
+@keyframes pmFlicker { from { transform: scale(1, 1) rotate(-2deg); } to { transform: scale(.92, 1.08) rotate(2deg); } }
+#recipient-view .candle { transition: transform .25s cubic-bezier(.16,1,.3,1); }
+#recipient-view .candle:hover { transform: translateY(-4px); }
+
+/* ---------- Polaroid + message ---------- */
+#recipient-view .polaroid-frame {
+    transform-style: preserve-3d; will-change: transform;
+    transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s;
+    box-shadow: 0 30px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.08);
+}
+#recipient-view .polaroid-frame img { transition: transform 1.2s cubic-bezier(.16,1,.3,1); }
+#recipient-view .polaroid-frame:hover img { transform: scale(1.05); }
+#recipient-view .quote-mark { filter: drop-shadow(0 0 16px var(--accent-focus-ring, rgba(255,215,0,.35))); }
+#recipient-view .custom-message-text { line-height: 1.75; text-wrap: pretty; }
+
+/* ---------- Buttons ---------- */
+#recipient-view .btn { border-radius: 16px; transition: transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s; }
+#recipient-view .btn:hover { transform: translateY(-3px); }
+#recipient-view .btn:active { transform: scale(.96); }
+#recipient-view .btn-primary { box-shadow: 0 12px 32px var(--accent-focus-ring, rgba(255,215,0,.35)); }
+.sound-float-btn, .back-btn { backdrop-filter: blur(14px); transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; }
+.sound-float-btn:hover, .back-btn:hover { transform: translateY(-2px) scale(1.06); box-shadow: 0 10px 26px rgba(0,0,0,.35); }
+
+/* ---------- Cursor sparkles ---------- */
+.pm-spark {
+    position: fixed; z-index: 9999; pointer-events: none; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent-glow, #ffd700); box-shadow: 0 0 12px var(--accent-glow, #ffd700);
+    animation: pmSpark .8s ease-out forwards;
+}
+@keyframes pmSpark { to { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; } }
+
+@media (max-width: 640px) {
+    #recipient-view::before, #recipient-view::after { filter: blur(60px); }
+    .pm-spark { display: none; }
+}
+@media (hover: none) { .pm-spark { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+    #recipient-view::before, #recipient-view::after, .pm-dust i, #recipient-view .gift-box,
+    #recipient-view .gift-box-wrapper::before, #recipient-view .tap-hint, .age-pill::after,
+    #recipient-view .big-birthday-heading .highlight-name, #recipient-view .candle .flame { animation: none !important; }
+    .pm-stagger > * { opacity: 1; transform: none; filter: none; }
+    .pm-spark, .pm-dust { display: none; }
+}

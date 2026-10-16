@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Name! 🎂🎉 Celebration & Wish Generator</title>
+    <meta name="description" content="Create personalized, animated birthday cards and interactive celebration experiences with multi-photo gallery, cake, music, and confetti.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/templates.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/advanced.css">
+    <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/modern.css">
+    <link rel="stylesheet" href="css/light.css">
+    <link rel="stylesheet" href="css/customize.css">
+    <link rel="stylesheet" href="css/upgrade.css">
+    <script>try{var u=localStorage.getItem("ws-ui");if(u)document.documentElement.setAttribute("data-ui",u);}catch(e){}</script>
+</head>
+<body class="theme-golden template-magazine">
+    <!-- Background Canvas for Confetti & Fireworks -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Background Floating Balloons Layer -->
+    <div id="balloon-container"></div>
+
+    <!-- Floating Top Bar Controls -->
+    <header class="top-nav">
+        <button id="btn-back-to-studio" class="back-btn hidden" title="Back to Customizer">
+            <span>✏️ Edit Wish / Studio</span>
+        </button>
+        <button id="sound-toggle-btn" class="sound-float-btn" aria-label="Toggle Sound" title="Toggle Sound">
+            <span id="sound-icon">🔊</span>
+        </button>
+    </header>
+
+    <!-- =========================================================
+         1. CREATOR STUDIO VIEW (Customize Birthday Card)
+         ========================================================= -->
+    <main id="studio-view">
+        <nav class="site-nav" id="site-nav">
+            <a class="brand" href="#top"><span class="brand-logo">🎂</span><span>Wish<b>Studio</b></span></a>
+            <div class="nav-links">
+                <a href="#how">How it works</a>
+                <a href="#features">Features</a>
+                <a href="#create">Themes</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <button type="button" class="ui-toggle" id="ui-toggle" aria-label="Switch light / dark mode" title="Switch light / dark mode">☀️</button>
+                <a class="nav-cta" href="#create">Create a card →</a>
+            </div>
+        </nav>
+        <span id="top"></span>
+        <div class="scroll-progress" id="scroll-progress"></div>
+        <div class="studio-header">
+            <div class="studio-badge">✨ Birthday Platform & Multi-Layout Generator ✨</div>
+            <h1>Make a Birthday Surprise</h1>
+            <p>Choose from 12 completely different design layouts, add photos, cake, and music!</p>
+            <div class="hero-actions">
+                <a href="#create" class="btn btn-primary hero-btn">Start creating — it's free</a>
+                <a href="#how" class="btn btn-secondary hero-btn">See how it works</a>
+            </div>
+            <div class="hero-stats">
+                <div><b data-count="12">12</b><span>Design layouts</span></div>
+                <div><b data-count="11">11</b><span>Music tunes</span></div>
+                <div><b data-count="100" data-suffix="%">100%</b><span>Works offline</span></div>
+                <div><b data-count="0" data-prefix="$">$0</b><span>No sign-up</span></div>
+            </div>
+        </div>
+
+        <div class="workspace">
+        <section class="glass-card studio-card" id="create">
+            <form id="birthday-form" onsubmit="event.preventDefault();">
+                <div class="form-grid">
+                    
+                    <!-- Name Input -->
+                    <div class="form-group">
+                        <label for="input-name">👤 Birthday Person's Name</label>
+                        <input type="text" id="input-name" class="form-control" placeholder="Name" required>
+                    </div>
+
+                    <!-- Wisher / Sender Name -->
+                    <div class="form-group">
+                        <label for="input-sender">✍️ Your Name (Wish From)</label>
+                        <input type="text" id="input-sender" class="form-control" placeholder="Your Name">
+                    </div>
+
+                    <!-- Birthday Date -->
+                    <div class="form-group">
+                        <label for="input-date">📅 Birthdate</label>
+                        <input type="date" id="input-date" class="form-control" required>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label for="input-age">🎂 Turning Age (Years)</label>
+                        <input type="number" id="input-age" class="form-control" placeholder="e.g. 24" min="1" max="130" value="24">
+                    </div>
+
+                    <!-- Tone / Music Melody Selector -->
+                    <div class="form-group">
+                        <label for="select-tune">🎵 Celebration Music Tone</label>
+                        <div class="tune-selector-wrap">
+                            <select id="select-tune" class="form-control">
+                                <optgroup label="Birthday Classics">
+                                    <option value="classic">🌟 Classic Happy Birthday</option>
+                                    <option value="musicbox">🔔 Dreamy Music Box (Twinkle Chime)</option>
+                                    <option value="waltz">💃 Elegant Waltz (Happy Birthday in 3/4)</option>
+                                    <option value="jazz">🎷 Smooth Jazz Swing</option>
+                                </optgroup>
+                                <optgroup label="Party Vibes">
+                                    <option value="party_beat">⚡ Upbeat Synth Party (Funky Dance)</option>
+                                    <option value="chiptune">🕹️ Retro 8-Bit Arcade</option>
+                                    <option value="rock">🎸 Rock Party Anthem</option>
+                                    <option value="fanfare">🎺 Royal Fanfare (Grand Celebration)</option>
+                                </optgroup>
+                                <optgroup label="Classical &amp; Calm">
+                                    <option value="ode">🎻 Joyful Ode to Joy (Beethoven)</option>
+                                    <option value="elise">🎹 Classical Piano (Für Elise)</option>
+                                    <option value="lullaby">🌙 Gentle Lullaby (Brahms)</option>
+                                </optgroup>
+                            </select>
+                            <button type="button" id="btn-preview-tune" class="btn btn-secondary btn-tune-preview">
+                                <span>▶ Listen / Test Tone</span>
+                            </button>
+                        </div>
+                        <div class="audio-upload-row">
+                            <input type="file" id="input-audio" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.opus,.flac" hidden>
+                            <button type="button" id="btn-upload-audio" class="btn btn-secondary btn-audio-upload">
+                                <span>🎶 Add your own audio track</span>
+                            </button>
+                            <span id="audio-file-name" class="audio-file-name hidden"></span>
+                            <button type="button" id="btn-remove-audio" class="audio-remove hidden" aria-label="Remove uploaded audio">✕ Remove</button>
+                        </div>
+                        <p class="upload-subtext">Any song or voice message (MP3, WAV, M4A… up to 12&nbsp;MB). It appears at the top of the list above, plays when the gift is opened, and is saved inside <b>Download Single HTML</b>. (A share link can't carry audio files.)</p>
+                    </div>
+
+                    <!-- Template Selector (12 Distinct Layouts) -->
+                    <div class="form-group full-width">
+                        <label>🎨 Select Design & Layout Template</label>
+                        <div class="theme-selector-grid">
+                            <div class="theme-option active" data-theme="theme-golden" data-layout="template-magazine">
+                                <div class="theme-color-swatch swatch-golden"></div>
+                                <span class="theme-name">👑 VIP Magazine</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-rose" data-layout="template-scrapbook">
+                                <div class="theme-color-swatch swatch-rose"></div>
+                                <span class="theme-name">📖 Vintage Book</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-galaxy" data-layout="template-stage">
+                                <div class="theme-color-swatch swatch-galaxy"></div>
+                                <span class="theme-name">🎪 Concert Stage</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-cyber" data-layout="template-cyber">
+                                <div class="theme-color-swatch swatch-cyber"></div>
+                                <span class="theme-name">⚡ Gamer HUD</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-emerald" data-layout="template-story">
+                                <div class="theme-color-swatch swatch-emerald"></div>
+                                <span class="theme-name">📱 Mobile Story</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-pastel" data-layout="template-classic">
+                                <div class="theme-color-swatch swatch-pastel"></div>
+                                <span class="theme-name">🎂 Classic Gala</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-sunset" data-layout="template-sunset">
+                                <div class="theme-color-swatch swatch-sunset"></div>
+                                <span class="theme-name">🌅 Sunset Arch</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-candy" data-layout="template-candy">
+                                <div class="theme-color-swatch swatch-candy"></div>
+                                <span class="theme-name">🍭 Candy Pop</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-ocean" data-layout="template-ocean">
+                                <div class="theme-color-swatch swatch-ocean"></div>
+                                <span class="theme-name">🌊 Ocean Wave</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-ice" data-layout="template-ice">
+                                <div class="theme-color-swatch swatch-ice"></div>
+                                <span class="theme-name">❄️ Ice Frame</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-sakura" data-layout="template-sakura">
+                                <div class="theme-color-swatch swatch-sakura"></div>
+                                <span class="theme-name">🌸 Sakura Oval</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-retro" data-layout="template-retro">
+                                <div class="theme-color-swatch swatch-retro"></div>
+                                <span class="theme-name">🕹️ Retro Arcade</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Photo Upload (Up to 10 Photos) -->
+                    <div class="form-group full-width">
+                        <div class="photos-header-row">
+                            <label>📸 Photos / Memories <span id="photos-count-badge" class="photos-count-badge">1 / 10 Photos</span></label>
+                            <label for="input-photos" id="btn-add-photos-trigger" class="btn-add-photos">
+                                <span>➕ Add Photos (Up to 10)</span>
+                            </label>
+                            <input type="file" id="input-photos" accept="image/*" multiple style="display: none;">
+                        </div>
+
+                        <div class="multi-photo-container">
+                            <div id="studio-photos-grid" class="studio-photos-grid">
+                                <!-- Thumbnails dynamically rendered by app.js -->
+                            </div>
+                            <button type="button" id="btn-open-avatar-maker" class="btn-avatar-maker">🎨 No photo? Create your own avatar</button>
+                            <p class="upload-subtext">You can add up to 10 photos! They'll drift through a smooth Ken-Burns zoom slideshow in the polaroid frame. ✨</p>
+                        </div>
+                    </div>
+
+                    <!-- Message & Presets -->
+                    <div class="form-group full-width">
+                        <label for="input-message">💌 Heartfelt Birthday Wish Message</label>
+                        <div class="presets-wrap">
+                            <button type="button" class="preset-btn" data-preset="sweet">💖 Sweet &amp; Warm</button>
+                            <button type="button" class="preset-btn" data-preset="bestie">🍕 Best Friend</button>
+                            <button type="button" class="preset-btn" data-preset="romantic">❤️ Romantic</button>
+                            <button type="button" class="preset-btn" data-preset="fun">🎉 Fun &amp; Humor</button>
+                            <button type="button" class="preset-btn" data-preset="sinhala">🇱🇰 සිංහල</button>
+                            <button type="button" class="preset-btn" data-preset="formal">👔 Formal</button>
+                            <button type="button" class="preset-btn" data-preset="poet">🌸 Poem</button>
+                            <button type="button" class="preset-btn" data-preset="motivate">🚀 Motivate</button>
+                        </div>
+                        <textarea id="input-message" class="form-control" rows="4" placeholder="Write your warm wishes here...">Happy Birthday Name! 🎂 May this year bring you endless success, joyful smiles, and unforgettable adventures. Keep shining bright!</textarea>
+                    </div>
+
+                    <!-- Post description (text printed on the post image / GIF) -->
+                    <div class="form-group full-width">
+                        <label for="input-post-text">📝 Post Description (text on the post image &amp; GIF)</label>
+                        <div class="presets-wrap">
+                            <button type="button" class="preset-btn" id="btn-post-copy-msg">📋 Copy wish message to edit</button>
+                            <button type="button" class="preset-btn" id="btn-post-clear">↺ Same as wish message</button>
+                        </div>
+                        <textarea id="input-post-text" class="form-control" rows="3" placeholder="Leave empty to use the wish message above, or write any caption you want on the post…"></textarea>
+                        <div class="msg-counter" id="post-text-hint"><span>💡 Only the post uses this — the celebration page keeps the wish message</span><span class="count"></span></div>
+                    </div>
+
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="studio-actions">
+                    <button type="button" id="btn-preview-celebration" class="btn btn-primary pulse-btn">
+                        <span>🎁 Preview Birthday Experience</span>
+                    </button>
+                    <button type="button" id="btn-copy-share-link" class="btn btn-secondary">
+                        <span>🔗 Copy Share Link</span>
+                    </button>
+                    <button type="button" id="btn-download-standalone" class="btn btn-secondary">
+                        <span>💾 Download Single HTML</span>
+                    </button>
+                    <div class="post-export-row">
+                        <select id="select-post-template" class="form-control" aria-label="Post template">
+                            <option value="polaroid">🖼️ Polaroid Card</option>
+                            <option value="circle">⭕ Elegant Circle</option>
+                            <option value="sheet">📱 Bottom Sheet</option>
+                            <option value="banner">🎇 Full Photo Banner</option>
+                            <option value="neon">💡 Neon Frame</option>
+                            <option value="film">🎞️ Film Strip</option>
+                            <option value="heart">💖 Heart Frame</option>
+                            <option value="arch">🏛️ Arch Window</option>
+                            <option value="ticket">🎟️ Party Ticket</option>
+                        </select>
+                        <select id="select-post-format" class="form-control" aria-label="Post size">
+                            <option value="square">Square 1:1 (Post)</option>
+                            <option value="portrait">Portrait 4:5 (Post)</option>
+                            <option value="story">Story 9:16 (Status)</option>
+                        </select>
+                    </div>
+                    <div class="post-export-row">
+                        <button type="button" id="btn-download-post-png" class="btn btn-secondary">
+                            <span>🖼️ Download Post Image</span>
+                        </button>
+                        <button type="button" id="btn-download-post-gif" class="btn btn-secondary">
+                            <span>🎞️ Download Animated GIF</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <aside class="live-panel" id="live-panel" aria-label="Live post preview">
+            <div class="live-head"><span class="live-dot"></span><b>Live preview</b><span class="live-tpl" id="live-tpl-name"></span></div>
+            <div id="post-template-preview" class="post-template-preview"></div>
+            <p class="live-sub">Pick a style below — your post updates instantly</p>
+            <div class="tpl-gallery" id="tpl-gallery" role="listbox" aria-label="Post styles"></div>
+        </aside>
+        </div>
+
+        <section class="site-section" id="how">
+            <p class="eyebrow">How it works</p>
+            <h2>Three steps to a birthday they'll never forget</h2>
+            <div class="steps-grid">
+                <article class="site-card"><span class="step-no">01</span><h3>Personalise</h3><p>Add their name, photos, a heartfelt message and pick a music tune.</p></article>
+                <article class="site-card"><span class="step-no">02</span><h3>Pick a design</h3><p>Choose from 12 hand-crafted layouts, from VIP Magazine to Concert Stage.</p></article>
+                <article class="site-card"><span class="step-no">03</span><h3>Share the magic</h3><p>Send a private link or a single HTML file over WhatsApp, Telegram or email.</p></article>
+            </div>
+        </section>
+
+        <section class="site-section" id="features">
+            <p class="eyebrow">Features</p>
+            <h2>Everything you need, nothing you don't</h2>
+            <div class="feature-grid">
+                <article class="site-card"><i>🎁</i><h3>3D gift unwrap</h3><p>Tap the gift and watch confetti and balloons fill the screen.</p></article>
+                <article class="site-card"><i>🕯️</i><h3>Interactive cake</h3><p>Real glowing candles they can blow out, with smoke and applause.</p></article>
+                <article class="site-card"><i>🎵</i><h3>Built-in music</h3><p>Eleven synthesised tunes. No downloads, no internet needed.</p></article>
+                <article class="site-card"><i>📸</i><h3>Photo gallery</h3><p>Add many photos with a slideshow inside a polaroid frame.</p></article>
+                <article class="site-card"><i>⏳</i><h3>Live countdown</h3><p>Sending early? They see a countdown to the big day.</p></article>
+                <article class="site-card"><i>🖼️</i><h3>Post &amp; GIF export</h3><p>Download a ready-to-post image or animated GIF for social media.</p></article>
+            </div>
+        </section>
+
+        <section class="site-section faq" id="faq">
+            <p class="eyebrow">FAQ</p>
+            <h2>Questions, answered</h2>
+            <details><summary>Is it really free?</summary><p>Yes. Everything runs in your browser, with no account or payment.</p></details>
+            <details><summary>Where are my photos stored?</summary><p>Only on your device. They are packed into the link or file you share, never uploaded to a server.</p></details>
+            <details><summary>Can they open it on a phone?</summary><p>Yes. Every layout is fully responsive and works in any modern browser.</p></details>
+            <details><summary>How do I send it?</summary><p>Copy the shareable link, or download the standalone HTML file and send it on any app.</p></details>
+        </section>
+
+        <footer class="site-footer">
+            <div class="brand"><span class="brand-logo">🎂</span><span>Wish<b>Studio</b></span></div>
+            <p>Made with ❤️ to make someone's day a little brighter.</p>
+            <div class="foot-links"><a href="#create">Create</a><a href="#how">How it works</a><a href="#features">Features</a><a href="#faq">FAQ</a></div>
+        </footer>
+        <div class="mobile-bar">
+            <button type="button" class="btn btn-primary" data-proxy="btn-preview-celebration">🎁 Preview</button>
+            <button type="button" class="btn btn-secondary" data-proxy="btn-download-post-png">🖼️ Post</button>
+            <button type="button" class="btn btn-secondary" data-proxy="btn-copy-share-link">🔗 Share</button>
+        </div>
+    </main>
+
+    <!-- =========================================================
+         2. RECIPIENT CELEBRATION EXPERIENCE VIEW
+         ========================================================= -->
+    <main id="recipient-view" class="hidden">
+
+        <!-- Pre-Birthday Countdown Screen (Shown if birthday is in the future) -->
+        <section id="countdown-section" class="recipient-panel hidden">
+            <div class="glass-card countdown-card">
+                <div class="badge-tag">Countdown to Celebration</div>
+                <h1 class="countdown-title">Special Day Incoming!</h1>
+                <p class="countdown-subtitle">Get ready to celebrate <strong class="dynamic-name">Name</strong>'s Birthday</p>
+                
+                <div class="countdown-grid">
+                    <div class="countdown-item"><span id="cd-days" class="num">00</span><span class="lbl">Days</span></div>
+                    <div class="countdown-item"><span id="cd-hours" class="num">00</span><span class="lbl">Hours</span></div>
+                    <div class="countdown-item"><span id="cd-minutes" class="num">00</span><span class="lbl">Mins</span></div>
+                    <div class="countdown-item"><span id="cd-seconds" class="num">00</span><span class="lbl">Secs</span></div>
+                </div>
+
+                <div class="countdown-actions">
+                    <button id="btn-peek-surprise" class="btn btn-primary pulse-btn">
+                        <span>🎁 Peek Surprise Experience Now</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Birthday Day Celebration Experience -->
+        <section id="celebration-section" class="recipient-panel">
+            
+            <!-- Step 1: Unwrap Surprise Box -->
+            <div id="unwrap-step" class="celebration-step">
+                <div class="gift-box-wrapper" id="gift-box-trigger">
+                    <div class="gift-sparkles"></div>
+                    <div class="gift-box">
+                        <div class="gift-lid">
+                            <div class="ribbon-bow"></div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-v"></div>
+                            <div class="gift-ribbon-h"></div>
+                        </div>
+                    </div>
+                    <div class="gift-tag">
+                        <span>For: <strong class="dynamic-name">Name</strong></span>
+                        <span id="gift-tag-from" class="gift-tag-from hidden">From: <strong id="display-sender-tag"></strong></span>
+                        <div class="tap-hint">✨ Tap Box to Unwrap Your Birthday Surprise! ✨</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Unveiled Celebration & Cake & Wish Card -->
+            <div id="card-reveal-step" class="celebration-step hidden">
+                
+                <div class="celebration-header">
+                    <div class="age-pill" id="display-age-pill">Level 24 Unlocked! 🌟</div>
+                    <h1 class="big-birthday-heading">Happy Birthday, <span class="highlight-name dynamic-name">Name</span>!</h1>
+                </div>
+
+                <div class="celebration-content-grid">
+                    <!-- Left: Interactive Birthday Cake -->
+                    <div class="cake-card glass-card">
+                        <div class="cake-container">
+                            <div class="candles-rack" id="candles-rack">
+                                <div class="candle" data-lit="true" title="Click to blow out!">
+                                    <div class="flame"></div>
+                                    <div class="smoke"></div>
+                                </div>
+                                <div class="candle" data-lit="true" title="Click to blow out!">
+                                    <div class="flame"></div>
+                                    <div class="smoke"></div>
+                                </div>
+                                <div class="candle" data-lit="true" title="Click to blow out!">
+                                    <div class="flame"></div>
+                                    <div class="smoke"></div>
+                                </div>
+                            </div>
+                            <div class="cake-tier tier-top">
+                                <div class="frosting-drips"></div>
+                            </div>
+                            <div class="cake-tier tier-middle">
+                                <div class="cake-strawberries">🍓 🍓 🍓</div>
+                            </div>
+                            <div class="cake-tier tier-base">
+                                <div class="cake-decor">✨ ✨ ✨</div>
+                            </div>
+                            <div class="cake-plate"></div>
+                        </div>
+
+                        <div class="cake-controls">
+                            <button id="blow-candles-btn" class="btn btn-secondary">
+                                <span>💨 Blow / Extinguish Candles</span>
+                            </button>
+                            <p class="cake-instruction">Click candles or button to make a wish!</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Photo Gallery Polaroid & Personal Greeting Card -->
+                    <div class="wish-card glass-card">
+                        <div class="polaroid-frame" id="polaroid-frame">
+                            <div class="photo-wrapper gallery-wrapper">
+                                <img id="display-photo" src="assets/avatar-sample.svg" alt="Birthday Person">
+                                
+                                <!-- Gallery Navigation Arrows -->
+                                <button type="button" id="btn-prev-photo" class="gallery-nav-btn prev-btn" aria-label="Previous Photo">‹</button>
+                                <button type="button" id="btn-next-photo" class="gallery-nav-btn next-btn" aria-label="Next Photo">›</button>
+                                <div id="gallery-photo-counter" class="gallery-counter">1 / 1</div>
+                            </div>
+
+                            <!-- Dots Indicator -->
+                            <div id="gallery-dots" class="gallery-dots-wrap"></div>
+
+                            <div class="polaroid-caption">
+                                <span class="caption-date" id="display-birthdate">Special Day</span>
+                                <span class="caption-stars">★★★★★</span>
+                            </div>
+                        </div>
+
+                        <div class="message-container">
+                            <div class="quote-mark">“</div>
+                            <p class="custom-message-text" id="display-message">Wishing you joyful smiles, and grand success in every dream!</p>
+                            <div class="quote-signature" id="display-signature">— With Lots of Love ❤️</div>
+                        </div>
+
+                        <div class="celebration-buttons">
+                            <button id="btn-burst-more" class="btn btn-primary">
+                                <span>🎉 More Confetti!</span>
+                            </button>
+                            <button id="btn-replay-tune" class="btn btn-secondary">
+                                <span>🎵 Play Birthday Song</span>
+                            </button>
+                            <button id="btn-toggle-slideshow" class="btn btn-secondary">
+                                <span>▶ Auto Slideshow</span>
+                            </button>
+                        </div>
+
+                        <!-- Birthday Quote Widget -->
+                        <div class="birthday-quote-widget">
+                            <div class="quote-widget-header">
+                                <span class="quote-widget-label">✨ Quote of the Day</span>
+                                <button id="btn-refresh-quote" class="quote-refresh-btn" title="Get another quote">🔄</button>
+                            </div>
+                            <p id="birthday-quote-text" class="quote-widget-text"></p>
+                            <p id="birthday-quote-author" class="quote-widget-author"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <!-- =========================================================
+         3. SHARE MODAL (WhatsApp, Wi-Fi & Web Link Options)
+         ========================================================= -->
+    <div id="share-modal" class="share-modal-backdrop hidden">
+        <div class="glass-card share-modal-card">
+            <div class="modal-header">
+                <h3>🚀 Share Birthday Surprise to Phone</h3>
+                <button type="button" id="btn-close-share-modal" class="modal-close-btn">✕</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-intro">Choose how you want to send this wish to <strong class="dynamic-name">Name</strong>:</p>
+
+                <!-- Method 1: WhatsApp / File (Best) -->
+                <div class="share-option-card recommended">
+                    <div class="share-badge">⭐ Recommended for WhatsApp</div>
+                    <h4>1. Send as a File via WhatsApp / Telegram</h4>
+                    <p>Click below to download the single self-contained card file, then attach & send it in WhatsApp or Telegram. Works on Android, iPhone, & PC!</p>
+                    <button type="button" id="modal-btn-download-html" class="btn btn-primary">
+                        <span>💾 Download WhatsApp Card (.html)</span>
+                    </button>
+                </div>
+
+                <!-- Method 2: Wi-Fi Link -->
+                <div class="share-option-card">
+                    <h4>2. Test on Phone on Same Wi-Fi (Home Network)</h4>
+                    <p>If your phone and PC are connected to the same Wi-Fi, you can open this link on your phone now:</p>
+                    <div class="link-copy-box">
+                        <input type="text" id="wifi-share-input" readonly value="">
+                        <button type="button" id="btn-copy-wifi-link" class="btn btn-secondary">Copy</button>
+                    </div>
+                </div>
+
+                <!-- Method 3: Public Free Link -->
+                <div class="share-option-card">
+                    <h4>3. Want a Free Public Link (https://...)?</h4>
+                    <p>To give a link that works anywhere in the world, simply drag and drop this <strong>Happy Birthday</strong> folder into <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color: #00f5d4; font-weight: bold; text-decoration: underline;">Netlify Drop</a> (free in 30 seconds!).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Lightbox Overlay -->
+    <div id="photo-lightbox" class="photo-lightbox-overlay hidden">
+        <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close">✕</button>
+        <img id="lightbox-img" src="" alt="Photo enlarged" class="lightbox-image">
+        <p class="lightbox-hint">Click outside to close &nbsp;|&nbsp; Press Esc</p>
+    </div>
+
+    <!-- Make-a-Wish Magic Modal -->
+    <div id="wish-modal" class="wish-modal-overlay hidden">
+        <div class="wish-modal-card">
+            <div class="wish-stars-animation">
+                <span>✨</span><span>⭐</span><span>🌟</span><span>💫</span><span>✨</span>
+            </div>
+            <div class="wish-emoji-big">🪄</div>
+            <h2 class="wish-modal-title">Make a Wish!</h2>
+            <p id="wish-modal-text" class="wish-modal-text"></p>
+            <button id="wish-modal-close" class="btn btn-primary wish-modal-close-btn">
+                <span>🎉 I Wished!</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcut Hint (fades in on celebration page) -->
+    <div id="keyboard-hint" class="keyboard-hint hidden">
+        <span>⌨️ Press <kbd>Space</kbd> for more confetti &nbsp;|&nbsp; <kbd>Esc</kbd> to close modals</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio.js"></script>
+    <script src="js/celebration.js"></script>
+    <script src="js/exporter.js"></script>
+    <script src="js/postgen.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/avatar.js"></script>
+    <script src="js/advanced.js"></script>
+    <script src="js/premium.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/customize.js"></script>
+    <script src="js/modern.js"></script>
+    <script src="js/upgrade.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+</html>

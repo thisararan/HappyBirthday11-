@@ -1,0 +1,156 @@
+/* =========================================================
+   ANIMATIONS & KEYFRAMES (animations.css)
+   ========================================================= */
+
+/* Floating balloons drifting upwards */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.85;
+    }
+    90% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* Balloon click/pop animation */
+@keyframes popDisappear {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.35);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Gift box gentle idle bounce */
+@keyframes boxGentleBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-8px) rotate(-1.5deg);
+    }
+    75% {
+        transform: translateY(-4px) rotate(1.5deg);
+    }
+}
+
+/* Tap to unwrap pulse hint */
+@keyframes pulseHint {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.85;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+        text-shadow: 0 0 12px var(--accent-glow, #ffd700);
+    }
+}
+
+/* Candle flame flickering */
+@keyframes flameFlicker {
+    0% {
+        transform: scale(1) rotate(-2deg);
+        filter: drop-shadow(0 0 6px rgba(255, 152, 0, 0.8));
+    }
+    50% {
+        transform: scale(1.08, 0.95) rotate(2deg);
+        filter: drop-shadow(0 0 12px rgba(255, 87, 34, 0.9));
+    }
+    100% {
+        transform: scale(0.96, 1.05) rotate(-1deg);
+        filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.85));
+    }
+}
+
+/* Extinguished candle smoke curling away */
+@keyframes smokeCurl {
+    0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    40% {
+        opacity: 0.6;
+        transform: translateY(-16px) scale(2.2) rotate(-15deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-38px) scale(3.5) rotate(25deg);
+    }
+}
+
+/* Card reveal fade-in and scale */
+.celebration-step.revealed {
+    animation: revealCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealCard {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.94);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Button pulse */
+.pulse-btn {
+    animation: btnPulse 2s infinite;
+}
+
+@keyframes btnPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 14px rgba(255, 215, 0, 0);
+    }
+}
+
+/* Animated gradient shimmer sweeping across gradient-clipped headings */
+@keyframes titleShimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Soft glow pulse for badges and active selections */
+@keyframes badgeGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25);
+    }
+    50% {
+        box-shadow: 0 4px 24px rgba(255, 215, 0, 0.55);
+    }
+}
+
+/* Gentle rise-and-fade entrance for cards */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

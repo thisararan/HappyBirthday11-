@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#ff9900"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffdbac"/>
+      <stop offset="100%" stop-color="#f1c27d"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGrad)" />
+  
+  <!-- Party Hat -->
+  <polygon points="100,18 78,72 122,72" fill="#ff4757" />
+  <circle cx="100" cy="16" r="7" fill="#ffd700" />
+  <polygon points="100,28 85,60 115,60" fill="#2ed573" opacity="0.8"/>
+  <polygon points="100,38 92,50 108,50" fill="#1e90ff" opacity="0.9"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="108" r="42" fill="url(#skinGrad)" />
+  
+  <!-- Smiling Eyes -->
+  <path d="M 84 100 Q 89 94 94 100" stroke="#333" stroke-width="3.5" fill="none" stroke-linecap="round" />
+  <path d="M 106 100 Q 111 94 116 100" stroke="#333" stroke-width="3.5" fill="none" stroke-linecap="round" />
+  
+  <!-- Rosy Cheeks -->
+  <circle cx="82" cy="112" r="6" fill="#ff7675" opacity="0.6" />
+  <circle cx="118" cy="112" r="6" fill="#ff7675" opacity="0.6" />
+  
+  <!-- Cheerful Smile -->
+  <path d="M 90 118 Q 100 132 110 118" stroke="#333" stroke-width="3.5" fill="#d63031" stroke-linecap="round" />
+  
+  <!-- Confetti Stars -->
+  <circle cx="45" cy="55" r="4" fill="#ffffff" opacity="0.8" />
+  <circle cx="155" cy="65" r="5" fill="#ffffff" opacity="0.8" />
+  <circle cx="35" cy="140" r="3" fill="#ffffff" opacity="0.8" />
+  <circle cx="165" cy="135" r="4" fill="#ffffff" opacity="0.8" />
+</svg>
